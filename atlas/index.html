@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Atlas - Steffen Molitor</title>
+        <link rel="icon" href="Bilder/buch.png">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="seiten">
+            <h1>Atlas - Steffen Molitor</h1>
+            <button id="min">_</button>
+            <button id="win"><img id="wini" src="Bilder/win.png"></button>
+            <button id="ex">X</button>
+            <button id="left" onclick="left()">&#9664;</button>
+            <button id="right" onclick="right()">&#9654;</button>
+            <div id="s1" num="1" class="seite"></div>
+            <div id="s2" num="2" class="seite"></div>
+            <div id="s3" num="3" class="seite"></div>
+            <div id="s4" num="4" class="seite"></div>
+            <div id="s5" num="5" class="seite"></div>
+            <div id="s6" num="6" class="seite"></div>
+            <div id="s7" num="7" class="seite"></div>
+            <div id="s8" num="8" class="seite"></div>
+            <div id="s9" num="9" class="seite"></div>
+            <div id="s10" num="10" class="seite"></div>
+            <div id="switch"><h3 id="norm">Normal</h3><input type="checkbox" id="editmode" onchange="edittoggle()"><h3 id="qf">Paradies-"Quick-Fixes"</h3></div>
+        </div>
+        <script>
+            var c = 1;
+            update();
+            for(i = 1; i < 11; i++){
+                document.getElementById("s" + i).style.backgroundImage = "url('Bilder/" + i + ".png')";
+            }
+            function right() {
+                if(c < 10) c++;
+                else c = 1;
+                update()
+            }
+            function left() {
+                if(c > 1) c--;
+                else c = 10;
+                update()
+            }
+            function update() {
+                for(i = 1; i < 11; i++) {
+                    if(i == c) {
+                        document.getElementById("s" + i).style.zIndex = 999;
+                    } else {
+                        document.getElementById("s" + i).style.zIndex = 5;
+                    }
+                }
+            }
+            function edittoggle() {
+                if(document.getElementById("editmode").checked) {
+                    var pref = "url('EdBilder/";
+                } else {
+                    var pref = "url('Bilder/";
+                }
+                for(i = 1; i < 11; i++){
+                    document.getElementById("s" + i).style.backgroundImage = pref + i + ".png')";
+                }
+            }
+        </script>
+    </body>
+</html>

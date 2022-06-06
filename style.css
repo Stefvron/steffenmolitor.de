@@ -1,0 +1,99 @@
+body {
+    background-color: #141414;
+    color: #ffcb28;
+    font-family: monospace;
+    font-weight: 100;
+    margin: 0;
+}
+a {
+    color: rgb(29, 202, 255);
+}
+#header {
+    top: calc(-60vh + 5vw);
+    left: -500vw;
+    position: fixed;
+    width: 500vw;
+    padding-left: 500vw;
+    height: calc(200px + 50vh);
+    min-height: 50px;
+    background-color: rgba(255, 162, 33, 0.9);
+    backdrop-filter: blur(3px) saturate(200%) brightness(200%);
+    -webkit-backdrop-filter: blur(3px) saturate(200%) brightness(200%);
+    z-index: 9999;
+    color: black;
+    transform: rotate(-5deg);
+    text-decoration: none;
+    font-style: normal;
+}
+#logo {
+    position: relative;
+    top: calc(200px + 50vh - 5vw - 170px + 10vh - 10px);
+    left: 0;
+    margin: 0;
+    z-index: 99999;
+    height: calc(170px + 5vw - 10vh);
+    float: left;
+}
+#title {
+    position: relative;
+    top: calc(200px + 50vh - 40px);
+    left: 20px;
+    margin: 0;
+    z-index: 99999;
+    height: calc(170px + 5vw - 10vh);
+    text-decoration: none;
+    font-style: normal;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#cont  {
+    position: absolute;
+    padding-top: calc(220px + 2.5vw - 10vh + 400px);
+    padding-bottom: 75px;
+    top: -400px;
+    left: 0;
+    right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: calc(100vw - 40px);
+    max-width: 1210px;
+    height: auto;
+    min-height: calc(100vh - 295px - 2.5vw + 10vh);
+    background-color: black;
+    display: block;
+    margin: auto;
+}
+#footer {
+    bottom: calc(-25px - 14vw);
+    left: -10000px;
+    position: fixed;
+    width: calc(10450px - 100vw);
+    padding-left: calc(9550px + 100vw);
+    height: 100px;
+    background-color: rgba(19, 19, 19, 0.9);
+    backdrop-filter: blur(3px) saturate(200%) brightness(200%);
+    -webkit-backdrop-filter: blur(3px) saturate(200%) brightness(200%);
+    z-index: 9999;
+    color: white;
+    font-size: 8px;
+    transform: rotate(-8deg);
+    text-decoration: none;
+    font-style: normal;
+}
+.sml {
+    line-height: 50px;
+    color: #ffcb28;
+    text-decoration-color: #ffcb28;
+}
+.sm {
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+.smn {
+    color: #ffcb28;
+    text-decoration-color: #ffcb28;
+    line-height: 50px;
+    font-size: 15px;
+    margin-left: 60px;
+}

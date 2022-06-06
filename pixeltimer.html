@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Pixeltimer</title>
+        <meta charset="utf-8">
+        <script>
+            function makePixel(colour,posX,posY) {
+                document.getElementById("window").innerHTML += '<div style="position: absolute; width: 2.5vh; height: 2.5vh; left: ' + posX * 2.5 + 'vh; top: ' + posY * 2.5 + 'vh; background-color: ' + colour + '; margin: 0; padding: 0;" class="' + posX + '_' + posY + ' pixel"></div>';
+            }
+            function deletePixel(posX,posY) {
+                elems = document.getElementsByClassName(posX + "_" + posY);
+                for(i = 0; i < elems.length; i++) {
+                    elems[i].outerHTML = "";
+                }
+            }
+            function deleteAll() {
+                elems = document.getElementsByClassName("pixel");
+                for(i = 0; i < elems.length; i++) {
+                    elems[i].outerHTML = "";
+                }
+            }
+            function numberAtOffset(num,dx,dy) {
+                num = parseInt(num);
+                switch(num) {
+                    case 0:
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",1+dx,0+dy);
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",0+dx,1+dy);
+                        makePixel("black",0+dx,2+dy);
+                        makePixel("black",0+dx,3+dy);
+                        makePixel("black",0+dx,4+dy);
+                        makePixel("black",1+dx,4+dy);
+                        makePixel("black",2+dx,4+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",2+dx,1+dy);
+                        break;
+
+                    case 1:
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,1+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",2+dx,4+dy);
+                        break;
+
+                    case 2:
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",1+dx,0+dy);
+                        makePixel("black",2+dx,1+dy);
+                        makePixel("black",1+dx,2+dy);
+                        makePixel("black",0+dx,3+dy);
+                        makePixel("black",0+dx,4+dy);
+                        makePixel("black",1+dx,4+dy);
+                        makePixel("black",2+dx,4+dy);
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",0+dx,2+dy);
+                        break;
+
+                    case 3:
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",1+dx,0+dy);
+                        makePixel("black",2+dx,1+dy);
+                        makePixel("black",1+dx,2+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",0+dx,4+dy);
+                        makePixel("black",1+dx,4+dy);
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",0+dx,2+dy);
+                        makePixel("black",2+dx,4+dy);
+                        break;
+
+                    case 4:
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",0+dx,1+dy);
+                        makePixel("black",0+dx,2+dy);
+                        makePixel("black",1+dx,2+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,1+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",2+dx,4+dy);
+                        break;
+
+                    case 5:
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",1+dx,0+dy);
+                        makePixel("black",0+dx,1+dy);
+                        makePixel("black",1+dx,2+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",0+dx,4+dy);
+                        makePixel("black",1+dx,4+dy);
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",0+dx,2+dy);
+                        makePixel("black",2+dx,4+dy);
+                        break;
+
+                    case 6:
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",1+dx,0+dy);
+                        makePixel("black",0+dx,1+dy);
+                        makePixel("black",1+dx,2+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",0+dx,4+dy);
+                        makePixel("black",1+dx,4+dy);
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",0+dx,2+dy);
+                        makePixel("black",2+dx,4+dy);
+                        makePixel("black",0+dx,3+dy);
+                        break;
+
+                    case 7:
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,1+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",2+dx,4+dy);
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",1+dx,0+dy);
+                        break;
+
+                    case 8:
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",1+dx,0+dy);
+                        makePixel("black",0+dx,1+dy);
+                        makePixel("black",1+dx,2+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",0+dx,4+dy);
+                        makePixel("black",1+dx,4+dy);
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",0+dx,2+dy);
+                        makePixel("black",2+dx,4+dy);
+                        makePixel("black",0+dx,3+dy);
+                        makePixel("black",2+dx,1+dy);
+                        break;
+
+                    case 9:
+                        makePixel("black",0+dx,0+dy);
+                        makePixel("black",1+dx,0+dy);
+                        makePixel("black",0+dx,1+dy);
+                        makePixel("black",1+dx,2+dy);
+                        makePixel("black",2+dx,3+dy);
+                        makePixel("black",0+dx,4+dy);
+                        makePixel("black",1+dx,4+dy);
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,2+dy);
+                        makePixel("black",0+dx,2+dy);
+                        makePixel("black",2+dx,4+dy);
+                        makePixel("black",2+dx,1+dy);
+                        break;
+
+                    default:
+                        makePixel("black",2+dx,0+dy);
+                        makePixel("black",2+dx,1+dy);
+                        makePixel("black",1+dx,2+dy);
+                        makePixel("black",0+dx,3+dy);
+                        makePixel("black",0+dx,4+dy);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input id="Zeit" type="text" placeholder="mm:ss"><button onclick="run()">Run!</button>
+        <div id="window" style="width: 80vh; height: 80vh; position: absolute; top: 10vh; left: 0; margin: 0; padding: 0;">
+            
+        </div>
+        <canvas id="image" style="width: 80vh; height: 80vh; position: absolute; top: 10vh; left: 85vh; margin: 0; padding: 0;"></canvas>
+        <script>
+            var min = 0;
+            var sec = 0;
+            var timer;
+            function run() {
+                deleteAll();
+                min = document.getElementById("Zeit").value.split(':')[0];
+                sec = document.getElementById("Zeit").value.split(':')[1];
+                clearInterval(timer);
+                timer = setInterval(countdown,1000);
+                min1 = min.toString().split("")[0];
+                min2 = min.toString().split("")[1];
+                sec1 = sec.toString().split("")[0];
+                sec2 = sec.toString().split("")[1];
+                deleteAll();
+                numberAtOffset(min1,1,1)
+                numberAtOffset(min2,5,1)
+                if(sec % 2 == 0) {
+                    makePixel("black",9,2);
+                    makePixel("black",9,4);
+                }
+                numberAtOffset(sec1,11,1)
+                numberAtOffset(sec2,15,1)
+            }
+            function countdown() {
+                deleteAll();
+                if(min != "00" || sec != "00") {
+                    if(sec != "00") {
+                        if(parseInt(sec) <= 10) {
+                            sec = "0" + (parseInt(sec) - 1)
+                        } else {
+                            sec = "" + (parseInt(sec) - 1)
+                        }
+                    } else {
+                        sec = 59;
+                        if(parseInt(min) <= 10) {
+                            min = "0" + (parseInt(min) - 1)
+                        } else {
+                            min = "" + (parseInt(min) - 1)
+                        }
+                    }
+                } else {
+                    clearInterval(timer);
+                }
+                deleteAll();
+                deleteAll();
+                deleteAll();
+                deleteAll();
+                min1 = min.toString().split("")[0];
+                min2 = min.toString().split("")[1];
+                sec1 = sec.toString().split("")[0];
+                sec2 = sec.toString().split("")[1];
+                deleteAll();
+                numberAtOffset(min1,1,1)
+                numberAtOffset(min2,5,1)
+                if(sec % 2 == 0) {
+                    makePixel("black",9,2);
+                    makePixel("black",9,4);
+                }
+                numberAtOffset(sec1,11,1)
+                numberAtOffset(sec2,15,1)
+            }
+        </script>
+    </body>
+
+</html>

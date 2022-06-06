@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+    <head>
+        <title>JSG</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body onload="run()">
+        <div id="game-container">
+            <div id="game">
+                <div id="test" class="pixel"></div>
+            </div>
+            <div id="hud">
+
+            </div>
+        </div>
+        <input type="checkbox" id="mond" name="mond" value="1"><label for="mond" style="color: white;">Mondmodus</label>
+        <input type="checkbox" id="anto" name="anto" value="1"><label for="anto" style="color: white;">Wuiimodus</label>
+        <input type="checkbox" id="weird" name="weird" value="1"><label for="weird" style="color: white;">Weirdmodus</label>
+        <script>
+            var interv;
+            var game = document.getElementById("game");
+            var pixel = document.querySelector('#test');
+            var m = 1;
+            var g = 0.98 * m;
+            var b = 0;
+            var cw = 0.5 * m;
+            var vx = Math.floor(Math.random() * 20) - 10;
+            var vy = Math.floor(Math.random() * 20) - 10;
+            var x = Math.floor(Math.random() * 160) + 1;
+            var y = Math.floor(Math.random() * 144) + 1;
+            var on = false;
+            var rcs = ["#9400D3", "#4B0082", "#0000FF", "#00FF00", "#FFFF00", "#FF7F00", "#FF0000"];
+            function run() {
+                m = 1;
+                g = 0.98 * m;
+                b = 0;
+                cw = 0.5 * m;
+                vx = Math.floor(Math.random() * 20) - 10;
+                vy = Math.floor(Math.random() * 20) - 10;
+                x = Math.floor(Math.random() * 160) + 1;
+                y = Math.floor(Math.random() * 144) + 1;
+                pixel.style.setProperty('--x', x);
+                pixel.style.setProperty('--y', y);
+                on = true;
+                clearInterval(interv);
+                interv = setInterval(step, 100);
+            }
+            function step() {
+                if(!document.getElementById("weird").checked) {
+                    grav = 0.98;
+                    if(document.getElementById("mond").checked) {
+                        grav = 0.16;
+                    }
+                    if(on) {
+                        if(x >= 160) {
+                            vx = -vx;
+                        } else if(x <= 1) {
+                            vx = -vx;
+                        }
+                        if(y >= 144) {
+                            if(document.getElementById("anto").checked) {
+                                vy = -g / 2;
+                            } else {
+                                vy = -vy + 0.1 * vy - g * 0.75;
+                            }
+                            g = grav * m;
+                        }
+                        x += vx;
+                        y += parseInt(vy + g + b);
+                        if(parseInt(vy + g + b) <= 0 && y == 144) {
+                            on = false;
+                            setTimeout(run, 1000);
+                        }
+                        g += grav * m;
+                        g = Math.min(g, 50);
+                        x = Math.min(x, 160);
+                        y = Math.min(y, 144);
+                        x = Math.max(x, 1);
+                        y = Math.max(y, 1);
+                        pixel.style.setProperty('--x', x);
+                        pixel.style.setProperty('--y', y);
+                        var pixels = document.getElementsByClassName("pixel");
+                        for(i = 0; i < pixels.length; i++) {
+                            elem = pixels[i];
+                            if(elem.id != "test") {
+                                elem.style.opacity -= 0.1;
+                                if(elem.style.opacity <= 0) {
+                                    elem.outerHTML = "";
+                                }
+                            }
+                        }
+                        var npx = document.createElement("div");
+                        npx.className = "pixel";
+                        npx.style.opacity = 1;
+                        npx.style.setProperty('--x', x);
+                        npx.style.setProperty('--y', y);
+                        npx.style.backgroundColor = "#ccc";
+                        game.appendChild(npx);
+                        console.log(x + " - " + y);
+                        console.log((vy + g + b) + " (" + vy + " + " + g + " + " + b + ")");
+                    }
+                } else {
+                    if(x >= 160) {
+                        vx = -vx;
+                    } else if(x <= 1) {
+                        vx = -vx;
+                    }
+                    if(y >= 144) {
+                        vy = -vy;
+                    } else if(y <= 1) {
+                        vy = -vy;
+                    }
+                    x += vx;
+                    y += vy;
+                    x = Math.min(x, 160);
+                    y = Math.min(y, 144);
+                    x = Math.max(x, 1);
+                    y = Math.max(y, 1);
+                    pixel.style.backgroundColor = rcs[Math.floor(Math.random() * rcs.length)];
+                    pixel.style.setProperty('--x', x);
+                    pixel.style.setProperty('--y', y);
+                    var pixels = document.getElementsByClassName("pixel");
+                    for(i = 0; i < pixels.length; i++) {
+                        elem = pixels[i];
+                        if(elem.id != "test") {
+                            elem.style.opacity -= 0.1;
+                            if(elem.style.opacity <= 0) {
+                                elem.outerHTML = "";
+                            }
+                        }
+                    }
+                    var npx = document.createElement("div");
+                    npx.className = "pixel";
+                    npx.style.opacity = 1;
+                    npx.style.setProperty('--x', x);
+                    npx.style.setProperty('--y', y);
+                    npx.style.backgroundColor = rcs[Math.floor(Math.random() * rcs.length)];
+                    game.appendChild(npx);
+                }
+            }
+        </script>
+    </body>
+</html>
